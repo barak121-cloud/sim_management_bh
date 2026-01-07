@@ -26,22 +26,23 @@ async function initApp() {
     // Try to initialize Supabase (will fallback to localStorage if not configured)
     await initSupabase();
 
-    // Check if user is logged in
+  // Check if user is logged in
     if (isLoggedIn()) {
         const user = getCurrentUser();
 
-        // Show main app
-        document.getElementById('page-landing').classList.remove('active');
-        document.getElementById('page-login').classList.remove('active');
-        document.getElementById('page-signup').classList.remove('active');
-        document.getElementById('app-wrapper').style.display = 'block';
+        // Safe cleanup: hide all guest pages
+        ['page-landing', 'page-login', 'page-signup-trainee', 'page-signup-instructor'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.classList.remove('active');
+        });
+
+        const appWrapper = document.getElementById('app-wrapper');
+        if (appWrapper) appWrapper.style.display = 'block';
 
         // Initialize dashboard
         await initDashboard();
-
         // Load calendar
         await renderCalendar();
-
         // Load profile
         await loadProfile();
     }
@@ -429,3 +430,4 @@ window.exportToExcel = exportToExcel;
 // ========================================
 
 document.addEventListener('DOMContentLoaded', initApp);
+
