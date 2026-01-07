@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="מערכת ניהול סימולטור טיסה - בית הלוחם">
   <title>סימולטור הטיסה - בית הלוחם</title>
-  
+
   <!-- Google Fonts - Rubik for Hebrew -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/styles.css">
-  
+
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 </head>
+
 <body>
   <!-- Toast Notifications Container -->
   <div id="toast-container" class="toast-container"></div>
@@ -30,7 +32,7 @@
         <h1 class="landing-title">🛫 סימולטור הטיסה</h1>
         <h2 style="font-size: 1.5rem; color: var(--text-secondary); margin-bottom: 1rem;">בית הלוחם</h2>
         <p class="landing-subtitle">
-          תוכנית הכשרה ייחודית לנכי צה"ל במסגרת סימולטור טיסה מתקדם. 
+          תוכנית הכשרה ייחודית לנכי צה"ל במסגרת סימולטור טיסה מתקדם.
           10 שיעורים מקיפים מהיכרות בסיסית ועד טיסת לילה וניווטים מתקדמים.
         </p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
@@ -79,7 +81,7 @@
           <h2 class="card-title">כניסה למערכת</h2>
           <button class="btn btn-sm btn-secondary" onclick="showPage('page-landing')">← חזרה</button>
         </div>
-        
+
         <form id="form-login" onsubmit="handleLogin(event)">
           <div class="form-group">
             <label class="form-label" for="login-email">אימייל</label>
@@ -93,7 +95,7 @@
             🔐 התחבר
           </button>
         </form>
-        
+
         <div style="text-align: center; margin-top: 1.5rem;">
           <p style="color: var(--text-muted);">אין לך חשבון?</p>
           <button class="btn btn-secondary" onclick="showPage('page-signup')">
@@ -114,28 +116,28 @@
           <h2 class="card-title">הרשמה למערכת</h2>
           <button class="btn btn-sm btn-secondary" onclick="showPage('page-login')">← חזרה</button>
         </div>
-        
+
         <form id="form-signup" onsubmit="handleSignup(event)">
           <div class="form-group">
             <label class="form-label" for="signup-name">שם מלא *</label>
             <input type="text" id="signup-name" class="form-input" placeholder="ישראל ישראלי" required>
           </div>
-          
+
           <div class="form-group">
             <label class="form-label" for="signup-email">אימייל *</label>
             <input type="email" id="signup-email" class="form-input" placeholder="your@email.com" required>
           </div>
-          
+
           <div class="form-group">
             <label class="form-label" for="signup-phone">טלפון *</label>
             <input type="tel" id="signup-phone" class="form-input" placeholder="050-1234567" required>
           </div>
-          
+
           <div class="form-group">
             <label class="form-label" for="signup-age">גיל</label>
             <input type="number" id="signup-age" class="form-input" placeholder="35" min="18" max="120">
           </div>
-          
+
           <div class="form-group">
             <label class="form-label" for="signup-role">תפקיד *</label>
             <select id="signup-role" class="form-input form-select" required>
@@ -146,17 +148,19 @@
               <option value="staff">גורם ניהולי</option>
             </select>
           </div>
-          
+
           <div class="form-group">
             <label class="form-label" for="signup-background">רקע טיסה/סימולטור</label>
-            <textarea id="signup-background" class="form-input" placeholder="ספר על הניסיון שלך בטיסה או בסימולטורים..."></textarea>
+            <textarea id="signup-background" class="form-input"
+              placeholder="ספר על הניסיון שלך בטיסה או בסימולטורים..."></textarea>
           </div>
-          
+
           <div class="form-group">
             <label class="form-label" for="signup-password">סיסמה *</label>
-            <input type="password" id="signup-password" class="form-input" placeholder="לפחות 6 תווים" minlength="6" required>
+            <input type="password" id="signup-password" class="form-input" placeholder="לפחות 6 תווים" minlength="6"
+              required>
           </div>
-          
+
           <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
             ✅ הרשם למערכת
           </button>
@@ -175,7 +179,7 @@
           <span style="font-size: 1.5rem;">🛫</span>
           <span class="navbar-title">בית הלוחם</span>
         </div>
-        
+
         <ul class="navbar-nav">
           <li>
             <a href="#" class="nav-link active" data-page="page-dashboard" onclick="showAppPage('page-dashboard')">
@@ -216,7 +220,7 @@
          ======================================== -->
     <div id="page-dashboard" class="page active">
       <div class="container" style="padding-top: 2rem; padding-bottom: 5rem;">
-        
+
         <!-- Notice Board -->
         <div id="notice-board" class="notice-board">
           <div class="notice-board-header">
@@ -230,18 +234,18 @@
             </div>
           </div>
         </div>
-        
+
         <!-- Welcome Card -->
         <div class="card" style="margin-bottom: 1.5rem;">
           <h2>שלום, <span id="user-name-display">משתמש</span>! 👋</h2>
           <p id="user-role-display">ברוך הבא למערכת ניהול הסימולטור</p>
         </div>
-        
+
         <!-- Stats Grid -->
         <div class="stats-grid" id="dashboard-stats">
           <!-- Stats loaded dynamically based on role -->
         </div>
-        
+
         <!-- Quick Actions -->
         <div class="card">
           <h3 style="margin-bottom: 1rem;">פעולות מהירות</h3>
@@ -254,7 +258,7 @@
             </button>
           </div>
         </div>
-        
+
         <!-- Syllabus Progress (Trainees) -->
         <div id="syllabus-progress-section" class="card" style="margin-top: 1.5rem; display: none;">
           <h3 style="margin-bottom: 1rem;">התקדמות בסילבוס</h3>
@@ -271,7 +275,7 @@
             השיעור הבא שלך: <strong id="next-lesson-display">שיעור 1</strong>
           </p>
         </div>
-        
+
         <!-- Upcoming Lessons (Instructors) -->
         <div id="upcoming-lessons-section" class="card" style="margin-top: 1.5rem; display: none;">
           <h3 style="margin-bottom: 1rem;">השיעורים הקרובים שלי</h3>
@@ -279,7 +283,7 @@
             <!-- Loaded dynamically -->
           </div>
         </div>
-        
+
       </div>
     </div>
 
@@ -294,15 +298,23 @@
             <h2 class="calendar-title" id="calendar-month-title">ינואר 2026</h2>
             <button class="btn btn-secondary btn-icon" onclick="changeMonth(1)">←</button>
           </div>
-          
+
           <!-- Legend -->
           <div style="display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; font-size: 0.85rem;">
-            <span><span style="display: inline-block; width: 12px; height: 12px; background: var(--status-full); border-radius: 3px;"></span> מאויש מלא</span>
-            <span><span style="display: inline-block; width: 12px; height: 12px; background: var(--status-partial); border-radius: 3px;"></span> חסר מתאמן</span>
-            <span><span style="display: inline-block; width: 12px; height: 12px; background: var(--status-empty); border-radius: 3px;"></span> חסר מדריך</span>
-            <span><span style="display: inline-block; width: 12px; height: 12px; background: var(--status-independent); border-radius: 3px;"></span> אימון עצמאי</span>
+            <span><span
+                style="display: inline-block; width: 12px; height: 12px; background: var(--status-full); border-radius: 3px;"></span>
+              מאויש מלא</span>
+            <span><span
+                style="display: inline-block; width: 12px; height: 12px; background: var(--status-partial); border-radius: 3px;"></span>
+              חסר מתאמן</span>
+            <span><span
+                style="display: inline-block; width: 12px; height: 12px; background: var(--status-empty); border-radius: 3px;"></span>
+              חסר מדריך</span>
+            <span><span
+                style="display: inline-block; width: 12px; height: 12px; background: var(--status-independent); border-radius: 3px;"></span>
+              אימון עצמאי</span>
           </div>
-          
+
           <div class="calendar-grid">
             <div class="calendar-day-header">ראשון</div>
             <div class="calendar-day-header">שני</div>
@@ -312,7 +324,7 @@
             <div class="calendar-day-header">שישי</div>
             <div class="calendar-day-header">שבת</div>
           </div>
-          
+
           <div class="calendar-grid" id="calendar-days">
             <!-- Days will be rendered here -->
           </div>
@@ -329,7 +341,7 @@
           <div class="card-header">
             <h2 class="card-title">הפרופיל שלי</h2>
           </div>
-          
+
           <div class="profile-card" style="margin-bottom: 1.5rem;">
             <div class="profile-avatar" id="profile-avatar">א</div>
             <div class="profile-info">
@@ -337,7 +349,7 @@
               <div class="profile-role" id="profile-role">תפקיד</div>
             </div>
           </div>
-          
+
           <form id="form-profile" onsubmit="handleProfileUpdate(event)">
             <div class="form-group">
               <label class="form-label">שם מלא</label>
@@ -360,7 +372,7 @@
             </button>
           </form>
         </div>
-        
+
         <!-- Instructor Notes (for next instructor) -->
         <div id="lesson-notes-section" class="card" style="margin-top: 1.5rem; display: none;">
           <h3 style="margin-bottom: 1rem;">הערות לשיעור הבא</h3>
@@ -381,7 +393,7 @@
     <div id="page-admin" class="page">
       <div class="container" style="padding-top: 2rem; padding-bottom: 5rem;">
         <h2 style="margin-bottom: 1.5rem;">ניהול המערכת ⚙️</h2>
-        
+
         <!-- Admin Tabs -->
         <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
           <button class="btn btn-primary" onclick="showAdminTab('tab-notices')">📢 לוח הודעות</button>
@@ -391,7 +403,7 @@
           <button class="btn btn-secondary" onclick="showAdminTab('tab-logs')">📋 לוג ביטולים</button>
           <button class="btn btn-secondary" onclick="exportToExcel()">📊 ייצוא אקסל</button>
         </div>
-        
+
         <!-- Notice Board Admin Tab -->
         <div id="tab-notices" class="admin-tab">
           <div class="card">
@@ -399,12 +411,13 @@
             <form onsubmit="postNotice(event)">
               <div class="form-group">
                 <label class="form-label">תוכן ההודעה</label>
-                <textarea id="notice-content" class="form-input" placeholder="למשל: הסימולטור יהיה מושבת לתחזוקה ביום ג'" required></textarea>
+                <textarea id="notice-content" class="form-input"
+                  placeholder="למשל: הסימולטור יהיה מושבת לתחזוקה ביום ג'" required></textarea>
               </div>
               <button type="submit" class="btn btn-primary">📢 פרסם הודעה</button>
             </form>
           </div>
-          
+
           <div class="card" style="margin-top: 1.5rem;">
             <h3 style="margin-bottom: 1rem;">הודעות קיימות</h3>
             <div id="admin-notice-list">
@@ -412,14 +425,15 @@
             </div>
           </div>
         </div>
-        
+
         <!-- Users Management Tab -->
         <div id="tab-users" class="admin-tab" style="display: none;">
           <div class="card">
             <h3 style="margin-bottom: 1rem;">ניהול משתמשים</h3>
-            
+
             <!-- Fast Track Registration -->
-            <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: var(--radius-lg); margin-bottom: 1.5rem;">
+            <div
+              style="background: var(--bg-tertiary); padding: 1rem; border-radius: var(--radius-lg); margin-bottom: 1.5rem;">
               <h4 style="margin-bottom: 0.5rem;">⚡ רישום מהיר (Fast Track)</h4>
               <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
                 רישום מתאמן לשיעור ללא צורך בסיסמה שלו
@@ -434,7 +448,7 @@
                 <button class="btn btn-primary" onclick="fastTrackRegister()">רשום</button>
               </div>
             </div>
-            
+
             <div class="table-container">
               <table class="table" id="users-table">
                 <thead>
@@ -453,7 +467,7 @@
             </div>
           </div>
         </div>
-        
+
         <!-- Schedule Management Tab -->
         <div id="tab-schedule" class="admin-tab" style="display: none;">
           <div class="card">
@@ -481,7 +495,7 @@
                   </select>
                 </div>
               </div>
-              
+
               <h4 style="margin: 1rem 0;">משבצות זמן</h4>
               <div id="time-slots-container">
                 <div class="time-slot-row" style="display: flex; gap: 1rem; margin-bottom: 0.5rem;">
@@ -490,19 +504,19 @@
                 </div>
               </div>
               <button type="button" class="btn btn-secondary btn-sm" onclick="addTimeSlot()">+ הוסף משבצת</button>
-              
+
               <div style="margin-top: 1.5rem;">
                 <button type="submit" class="btn btn-primary btn-lg">📅 צור יום אימון</button>
               </div>
             </form>
           </div>
         </div>
-        
+
         <!-- Instructors Statistics Tab -->
         <div id="tab-instructors" class="admin-tab" style="display: none;">
           <div class="card">
             <h3 style="margin-bottom: 1rem;">סטטיסטיקת מדריכים</h3>
-            
+
             <!-- Inactive Alert -->
             <div id="inactive-instructors-alert" style="display: none;" class="notice-board">
               <div class="notice-board-header">
@@ -511,7 +525,7 @@
               </div>
               <div id="inactive-instructors-list"></div>
             </div>
-            
+
             <div class="table-container">
               <table class="table">
                 <thead>
@@ -530,7 +544,7 @@
             </div>
           </div>
         </div>
-        
+
         <!-- Logs Tab -->
         <div id="tab-logs" class="admin-tab" style="display: none;">
           <div class="card">
@@ -552,7 +566,7 @@
             </div>
           </div>
         </div>
-        
+
       </div>
     </div>
 
@@ -652,6 +666,16 @@
     </div>
   </div>
 
+  <!-- Supabase Configuration -->
+  <script>
+    // Supabase credentials - configured for production
+    window.ENV = {
+      SUPABASE_URL: 'https://rnwrmqfpejqhnfoqvtzr.supabase.co',
+      SUPABASE_ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJud3JtcWZwZWpxaG5mb3F2dHpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc4MTMzNDgsImV4cCI6MjA4MzM4OTM0OH0.IdHQ5nmwT-cbU24EchlfybhNh_79hYvzHe7W9etjBIE'
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <!-- JavaScript Modules -->
   <script src="js/syllabus.js" type="module"></script>
   <script src="js/supabase.js" type="module"></script>
@@ -664,4 +688,5 @@
   <script src="js/analytics.js" type="module"></script>
   <script src="app.js" type="module"></script>
 </body>
+
 </html>
