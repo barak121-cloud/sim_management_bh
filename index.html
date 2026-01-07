@@ -39,9 +39,21 @@
           <button class="btn btn-primary btn-lg" onclick="showPage('page-login')">
             🔐 כניסה למערכת
           </button>
-          <button class="btn btn-secondary btn-lg" onclick="showModal('modal-join-request')">
-            ✉️ בקשת הצטרפות
-          </button>
+        </div>
+
+        <!-- Registration Banner -->
+        <div
+          style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%); border-radius: var(--radius-lg); border: 1px solid var(--border-color);">
+          <h3 style="margin-bottom: 1rem; text-align: center;">🎯 הצטרף אלינו</h3>
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary btn-lg" onclick="showPage('page-signup-trainee')" style="min-width: 180px;">
+              🧑‍🎓 הרשמת חניך
+            </button>
+            <button class="btn btn-secondary btn-lg" onclick="showPage('page-signup-instructor')"
+              style="min-width: 180px;">
+              👨‍✈️ הרשמת מדריך
+            </button>
+          </div>
         </div>
       </div>
 
@@ -98,73 +110,150 @@
 
         <div style="text-align: center; margin-top: 1.5rem;">
           <p style="color: var(--text-muted);">אין לך חשבון?</p>
-          <button class="btn btn-secondary" onclick="showPage('page-signup')">
-            הרשמה למערכת
-          </button>
+          <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-secondary" onclick="showPage('page-signup-trainee')">
+              הרשמת חניך
+            </button>
+            <button class="btn btn-secondary" onclick="showPage('page-signup-instructor')">
+              הרשמת מדריך
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- ========================================
-       Signup Page
+       Trainee Signup Page
        ======================================== -->
-  <div id="page-signup" class="page">
+  <div id="page-signup-trainee" class="page">
     <div class="container" style="max-width: 550px; padding-top: 2rem;">
       <div class="card">
         <div class="card-header">
-          <h2 class="card-title">הרשמה למערכת</h2>
-          <button class="btn btn-sm btn-secondary" onclick="showPage('page-login')">← חזרה</button>
+          <h2 class="card-title">🧑‍🎓 הרשמת חניך</h2>
+          <button class="btn btn-sm btn-secondary" onclick="showPage('page-landing')">← חזרה</button>
         </div>
 
-        <form id="form-signup" onsubmit="handleSignup(event)">
-          <div class="form-group">
-            <label class="form-label" for="signup-name">שם מלא *</label>
-            <input type="text" id="signup-name" class="form-input" placeholder="ישראל ישראלי" required>
+        <form id="form-signup-trainee" onsubmit="handleTraineeSignup(event)">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label" for="trainee-firstname">שם פרטי *</label>
+              <input type="text" id="trainee-firstname" class="form-input" placeholder="ישראל" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="trainee-lastname">שם משפחה *</label>
+              <input type="text" id="trainee-lastname" class="form-input" placeholder="ישראלי" required>
+            </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="signup-email">אימייל *</label>
-            <input type="email" id="signup-email" class="form-input" placeholder="your@email.com" required>
+            <label class="form-label" for="trainee-age">גיל *</label>
+            <input type="number" id="trainee-age" class="form-input" placeholder="35" min="18" max="120" required>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="signup-phone">טלפון *</label>
-            <input type="tel" id="signup-phone" class="form-input" placeholder="050-1234567" required>
+            <label class="form-label" for="trainee-expectations">ציפיות מהקורס</label>
+            <textarea id="trainee-expectations" class="form-input" rows="3"
+              placeholder="מה אתה מצפה ללמוד בקורס הסימולטור?"></textarea>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="signup-age">גיל</label>
-            <input type="number" id="signup-age" class="form-input" placeholder="35" min="18" max="120">
+            <label class="form-label" for="trainee-email">אימייל *</label>
+            <input type="email" id="trainee-email" class="form-input" placeholder="your@email.com" required>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="signup-role">תפקיד *</label>
-            <select id="signup-role" class="form-input form-select" required>
-              <option value="">בחר תפקיד...</option>
-              <option value="trainee">מתאמן</option>
-              <option value="instructor_junior">מדריך חדש</option>
-              <option value="instructor_senior">מדריך ותיק</option>
-              <option value="staff">גורם ניהולי</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="signup-background">רקע טיסה/סימולטור</label>
-            <textarea id="signup-background" class="form-input"
-              placeholder="ספר על הניסיון שלך בטיסה או בסימולטורים..."></textarea>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="signup-password">סיסמה *</label>
-            <input type="password" id="signup-password" class="form-input" placeholder="לפחות 6 תווים" minlength="6"
+            <label class="form-label" for="trainee-password">סיסמה *</label>
+            <input type="password" id="trainee-password" class="form-input" placeholder="לפחות 6 תווים" minlength="6"
               required>
           </div>
 
           <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
-            ✅ הרשם למערכת
+            ✅ הרשם כחניך
           </button>
         </form>
+
+        <div
+          style="text-align: center; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+          <p style="color: var(--text-muted); font-size: 0.9rem;">מדריך? <a href="#"
+              onclick="showPage('page-signup-instructor'); return false;" style="color: var(--primary);">הרשמה
+              למדריכים</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================
+       Instructor Signup Page
+       ======================================== -->
+  <div id="page-signup-instructor" class="page">
+    <div class="container" style="max-width: 550px; padding-top: 2rem;">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">👨‍✈️ הרשמת מדריך</h2>
+          <button class="btn btn-sm btn-secondary" onclick="showPage('page-landing')">← חזרה</button>
+        </div>
+
+        <form id="form-signup-instructor" onsubmit="handleInstructorSignup(event)">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label" for="instructor-firstname">שם פרטי *</label>
+              <input type="text" id="instructor-firstname" class="form-input" placeholder="ישראל" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="instructor-lastname">שם משפחה *</label>
+              <input type="text" id="instructor-lastname" class="form-input" placeholder="ישראלי" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="instructor-role">סוג מדריך *</label>
+            <select id="instructor-role" class="form-input form-select" required>
+              <option value="">בחר...</option>
+              <option value="instructor_junior">מדריך חדש</option>
+              <option value="instructor_senior">מדריך ותיק</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="instructor-sim-background">רקע בסימולטורים</label>
+            <textarea id="instructor-sim-background" class="form-input" rows="2"
+              placeholder="ספר על הניסיון שלך בסימולטורים..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="instructor-flight-background">רקע בטיסה</label>
+            <textarea id="instructor-flight-background" class="form-input" rows="2"
+              placeholder="ספר על הניסיון שלך בטיסה אמיתית..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="instructor-phone">טלפון נייד *</label>
+            <input type="tel" id="instructor-phone" class="form-input" placeholder="050-1234567" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="instructor-email">אימייל *</label>
+            <input type="email" id="instructor-email" class="form-input" placeholder="your@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="instructor-password">סיסמה *</label>
+            <input type="password" id="instructor-password" class="form-input" placeholder="לפחות 6 תווים" minlength="6"
+              required>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+            ✅ הרשם כמדריך
+          </button>
+        </form>
+
+        <div
+          style="text-align: center; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+          <p style="color: var(--text-muted); font-size: 0.9rem;">חניך? <a href="#"
+              onclick="showPage('page-signup-trainee'); return false;" style="color: var(--primary);">הרשמה לחניכים</a>
+          </p>
+        </div>
       </div>
     </div>
   </div>

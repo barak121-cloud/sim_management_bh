@@ -273,6 +273,60 @@ async function handleSignup(event) {
     }
 }
 
+async function handleTraineeSignup(event) {
+    event.preventDefault();
+
+    const firstName = document.getElementById('trainee-firstname').value;
+    const lastName = document.getElementById('trainee-lastname').value;
+
+    const userData = {
+        name: `${firstName} ${lastName}`,
+        email: document.getElementById('trainee-email').value,
+        age: document.getElementById('trainee-age').value,
+        expectations: document.getElementById('trainee-expectations').value,
+        role: 'trainee',
+        password: document.getElementById('trainee-password').value,
+        currentLesson: 1,
+        status: 'active'
+    };
+
+    const result = await signup(userData);
+
+    if (result.success) {
+        showToast('נרשמת בהצלחה כחניך!', 'success');
+        window.location.reload();
+    } else {
+        showToast(result.error, 'error');
+    }
+}
+
+async function handleInstructorSignup(event) {
+    event.preventDefault();
+
+    const firstName = document.getElementById('instructor-firstname').value;
+    const lastName = document.getElementById('instructor-lastname').value;
+
+    const userData = {
+        name: `${firstName} ${lastName}`,
+        email: document.getElementById('instructor-email').value,
+        phone: document.getElementById('instructor-phone').value,
+        role: document.getElementById('instructor-role').value,
+        simBackground: document.getElementById('instructor-sim-background').value,
+        flightBackground: document.getElementById('instructor-flight-background').value,
+        password: document.getElementById('instructor-password').value,
+        status: 'active'
+    };
+
+    const result = await signup(userData);
+
+    if (result.success) {
+        showToast('נרשמת בהצלחה כמדריך!', 'success');
+        window.location.reload();
+    } else {
+        showToast(result.error, 'error');
+    }
+}
+
 function handleLogout() {
     logout();
 }
@@ -358,6 +412,8 @@ window.showAppPage = showAppPage;
 window.showAdminTab = showAdminTab;
 window.handleLogin = handleLogin;
 window.handleSignup = handleSignup;
+window.handleTraineeSignup = handleTraineeSignup;
+window.handleInstructorSignup = handleInstructorSignup;
 window.handleLogout = handleLogout;
 window.handleProfileUpdate = handleProfileUpdate;
 window.postNotice = postNotice;
